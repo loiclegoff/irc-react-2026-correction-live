@@ -2,6 +2,7 @@ import { useState } from 'react';
 import { RobotList } from './components/RobotList';
 import { PartList } from './components/PartList';
 import "bootstrap/dist/css/bootstrap.min.css";
+import './App.css';
 
 function App() {
   const [selectedPartIds, setSelectedPartIds] = useState([]);
