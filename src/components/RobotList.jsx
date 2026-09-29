@@ -1,7 +1,7 @@
 import { useState, useEffect } from 'react';
 import { Robot } from './Robot';
 
-export function RobotList() {
+export function RobotList({ onSelectRobot }) {
   const [robots, setRobots] = useState([])
 
   useEffect(() => {
@@ -26,6 +26,8 @@ export function RobotList() {
             title={robot.title}
             src={robot.visual_src}
             type={robot.visual_type}
+            partIds={robot.parts}
+            onSelectRobot={onSelectRobot}
           />
         ))}
       </ul>
