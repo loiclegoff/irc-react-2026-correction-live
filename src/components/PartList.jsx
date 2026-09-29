@@ -1,6 +1,7 @@
 import { useState, useEffect } from 'react';
+import { Part } from './Part';
 
-export function PartList({ partIds }) {
+export function PartList({ partIds, setPart }) {
   const [parts, setParts] = useState([]);
 
   useEffect(() => {
@@ -23,7 +24,7 @@ export function PartList({ partIds }) {
       <h2>Selected Parts</h2>
       <ul>
         {parts.map((part) => (
-          <li key={part.id}>{part.title}</li>
+          <Part key={part.id} title={part.title} price={part.price} onPartSelect={setPart} description={part.description} />
         ))}
       </ul>
     </div>
