@@ -1,34 +1,19 @@
-import { useState, useEffect } from 'react';
-import { Robot } from './Robot';
+import { Robot } from "./Robot";
 
-export function RobotList() {
-  const [robots, setRobots] = useState([])
-
-  useEffect(() => {
-    fetch('https://robot-cpe.cleverapps.io/robots')
-      .then((response) => response.json())
-      .then((data) => setRobots(data))
-      .catch((error) => console.error('Error fetching robots:', error));
-  }, []);
-
-  if (robots.length === 0) {
-    return <p>Loading robots...</p>
-  }
-
+export function RobotList({ robots, selectedRobotId, onSelect }) {
   return (
-    <div>
-      <h2>Robot List</h2>
-      <ul>
+    <section className="panel" aria-label="Robots">
+      <h2>Robots</h2>
+      <div className="item-list">
         {robots.map((robot) => (
           <Robot
             key={robot.id}
-            id={robot.id}
-            title={robot.title}
-            src={robot.visual_src}
-            type={robot.visual_type}
+            robot={robot}
+            selected={robot.id === selectedRobotId}
+            onSelect={() => onSelect(robot.id)}
           />
         ))}
-      </ul>
-    </div>
+      </div>
+    </section>
   );
 }
