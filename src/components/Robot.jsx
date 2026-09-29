@@ -1,14 +1,17 @@
-import Card from 'react-bootstrap/Card';
-import { VisualRobot } from './VisualRobot';
+import { Visual } from "./Visual";
 
-export function Robot({ id, title, src, type, onSelectRobot, partIds }) {
+export function Robot({ robot, selected, onSelect }) {
   return (
-    <Card style={{ width: '18rem' }} onClick={() => onSelectRobot(partIds)}>
-      <VisualRobot src={src} type={type} title={title} />
-      <Card.Body>
-        <Card.Title>{title}</Card.Title>
-        <Card.Text>Type: {type}</Card.Text>
-      </Card.Body>
-    </Card>
+    <article className={`item-card ${selected ? "selected" : ""}`}>
+      <button
+        type="button"
+        className="robot-select"
+        onClick={onSelect}
+        aria-pressed={selected}
+      >
+        <span className="item-title">{robot.title}</span>
+      </button>
+      <Visual type={robot.visual_type} src={robot.visual_src} title={robot.title} />
+    </article>
   );
 }

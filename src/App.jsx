@@ -1,14 +1,15 @@
-import { useState } from 'react';
-import { RobotList } from './components/RobotList';
-import { PartList } from './components/PartList';
+import { RobotsContainer } from "./components/RobotsContainer";
 import "bootstrap/dist/css/bootstrap.min.css";
+import "./App.css";
 
 function App() {
-  const [selectedPartIds, setSelectedPartIds] = useState([]);
+  return (
+    <div className="App">
+      <h1>Robots et pièces</h1>
 
-  return <div className="container">
-    <RobotList onSelectRobot={setSelectedPartIds} />
-    <PartList partIds={selectedPartIds} />
-  </div>
+      <RobotsContainer />
+    </div>
+  );
 }
+
 export default App;

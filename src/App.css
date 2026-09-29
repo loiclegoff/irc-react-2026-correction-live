@@ -1,42 +1,108 @@
 #root {
-  max-width: 1280px;
+  max-width: 1400px;
   margin: 0 auto;
   padding: 2rem;
-  text-align: center;
 }
 
-.logo {
-  height: 6em;
-  padding: 1.5em;
-  will-change: filter;
-  transition: filter 300ms;
-}
-.logo:hover {
-  filter: drop-shadow(0 0 2em #646cffaa);
-}
-.logo.react:hover {
-  filter: drop-shadow(0 0 2em #61dafbaa);
+h1 {
+  margin-top: 0;
 }
 
-@keyframes logo-spin {
-  from {
-    transform: rotate(0deg);
+.robots-container {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 1rem;
+  align-items: start;
+}
+
+.panel {
+  background: white;
+  border: 1px solid #d5dce5;
+  border-radius: 8px;
+  padding: 1rem;
+  min-height: 280px;
+}
+
+.panel h2 {
+  font-size: 1.25rem;
+  margin: 0 0 1rem;
+}
+
+.item-list {
+  display: grid;
+  gap: 0.75rem;
+  max-height: 70vh;
+  overflow-y: auto;
+}
+
+.item-card {
+  display: block;
+  width: 100%;
+  padding: 1rem;
+  border: 1px solid #d5dce5;
+  border-radius: 6px;
+  background: white;
+  color: inherit;
+  text-align: left;
+}
+
+.robot-select {
+  display: block;
+  width: 100%;
+  padding: 0 0 0.75rem;
+  border: 0;
+  background: transparent;
+  color: inherit;
+  cursor: pointer;
+  text-align: left;
+}
+
+.item-card.selected {
+  border-color: #0d6efd;
+  background: #f1f7ff;
+}
+
+.item-card img,
+.item-card video,
+.item-card iframe,
+.panel > img,
+.panel > video,
+.panel > iframe {
+  display: block;
+  width: 100%;
+  max-height: 220px;
+  object-fit: contain;
+  margin-bottom: 0.75rem;
+}
+
+.item-card iframe {
+  height: 200px;
+  border: 0;
+}
+
+.panel > iframe {
+  height: 240px;
+  border: 0;
+}
+
+.item-title {
+  display: block;
+  font-weight: bold;
+}
+
+.item-card h3 {
+  font-size: 1rem;
+  margin: 0 0 0.5rem;
+}
+
+.price {
+  font-weight: bold;
+  color: #0a58ca;
+  margin-bottom: 0;
+}
+
+@media (max-width: 850px) {
+  .robots-container {
+    grid-template-columns: 1fr;
   }
-  to {
-    transform: rotate(360deg);
-  }
-}
-
-@media (prefers-reduced-motion: no-preference) {
-  a:nth-of-type(2) .logo {
-    animation: logo-spin infinite 20s linear;
-  }
-}
-
-.card {
-  padding: 2em;
-}
-
-.read-the-docs {
-  color: #888;
 }
