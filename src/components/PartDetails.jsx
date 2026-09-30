@@ -1,4 +1,9 @@
-export function PartDetail({ part }) {
+import { useSelector } from 'react-redux';
+import { selectSelectedPart } from '../core/selectors';
+
+export function PartDetail() {
+  const part = useSelector(selectSelectedPart);
+
   if (!part) {
     return <p>No part selected.</p>;
   }

@@ -6,13 +6,10 @@ import "bootstrap/dist/css/bootstrap.min.css";
 import './App.css';
 
 function App() {
-  const [selectedPartIds, setSelectedPartIds] = useState([]);
-  const [part, setPart] = useState(null);
-
   return <div className="container">
-    <RobotList onSelectRobot={setSelectedPartIds} />
-    <PartList partIds={selectedPartIds} setPart={setPart} />
-    <PartDetail part={part}/>
+    <RobotList />
+    <PartList />
+    <PartDetail />
   </div>
 }
 export default App;

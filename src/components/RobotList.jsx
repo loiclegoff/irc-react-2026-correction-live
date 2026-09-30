@@ -2,25 +2,27 @@ import { useState, useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { Robot } from './Robot';
 import { selectRobots } from '../core/selectors';
-import { loadRobots } from '../core/actions';
+import { loadRobots, updatePartIds } from '../core/actions';
 
 export function RobotList({ onSelectRobot }) {
-  const [robots, setRobots] = useState([])
   const dispatch = useDispatch();
 
   useEffect(() => {
     fetch('https://robot-cpe.cleverapps.io/robots')
       .then((response) => response.json())
       .then((data) => {
-        setRobots(data);
         dispatch(loadRobots(data));
       })
       .catch((error) => console.error('Error fetching robots:', error));
   }, []);
 
+  function onSelectRobot(partIds) {
+    dispatch(updatePartIds(partIds));
+  }
+
   const robotsFromStore = useSelector(selectRobots);
 
-  if (robots.length === 0) {
+  if (robotsFromStore.length === 0) {
     return <p>Loading robots...</p>
   }
 
@@ -29,9 +31,8 @@ export function RobotList({ onSelectRobot }) {
     <div>
       <h2>Robot List</h2>
 
-      {JSON.stringify(robotsFromStore)}
       <ul>
-        {robots.map((robot) => (
+        {robotsFromStore.map((robot) => (
           <Robot
             key={robot.id}
             id={robot.id}
